@@ -316,6 +316,10 @@ footer{
 
     <div class="slideshow">
         <img id="slide" src="https://picsum.photos/600?1">
+        <div class="caption" id="caption">
+            i'm counting down the days until i see you...
+            your absence effects me,missing you right now😭💔
+        </div>
     </div>
 </section>
 <!-- MUSIC -->
@@ -339,7 +343,50 @@ footer{
     <button class="kiss-btn" onclick="sendKiss()">Send Me a Kiss 💋</button>
     <div class="kiss-count">Kisses Collected: <span id="kissCount">0</span></div>
 </section>
+<!-- 🎂 BIRTHDAY QUIZ SECTION -->
+<section class="section" id="quiz">
+    <h2>Quiz for You 🎂</h2>
 
+    <div class="quiz-container">
+
+        <!-- Question 1 -->
+        <div class="quiz-question">
+            <p>1️⃣ Who is the birthday star today? 🎂</p>
+            <label><input type="radio" name="q1" value="wrong"> Me 😌</label><br>
+            <label><input type="radio" name="q1" value="correct"> You My Love 💖</label><br>
+            <label><input type="radio" name="q1" value="wrong"> Our Neighbor 😂</label><br>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="quiz-question">
+            <p>2️⃣ What do I love the most about you? 💕</p>
+            <label><input type="radio" name="q2" value="wrong"> Your Anger 😜</label><br>
+            <label><input type="radio" name="q2" value="correct"> Your Eyes & Personality 😍</label><br>
+            <label><input type="radio" name="q2" value="wrong"> Your hug</label><br>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="quiz-question">
+            <p>3️⃣ What do I want from you forever? 🥺</p>
+            <label><input type="radio" name="q3" value="correct"> Loyalty ❤️</label><br>
+            <label><input type="radio" name="q3" value="wrong"> Money 💸</label><br>
+            <label><input type="radio" name="q3" value="wrong"> Chocolate 🍫</label><br>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="quiz-question">
+            <p>4️⃣ How much do I love you? 💋</p>
+            <label><input type="radio" name="q4" value="wrong"> Little 🤏</label><br>
+            <label><input type="radio" name="q4" value="wrong"> Medium 😌</label><br>
+            <label><input type="radio" name="q4" value="correct"> Endless ♾️</label><br>
+        </div>
+
+        <br>
+        <button class="btn" onclick="checkQuiz()">Submit Quiz 💖</button>
+
+        <h3 id="quizResult"></h3>
+    </div>
+</section>
 <section class="section">
     <h2>💌 Special Message</h2>
     <div class="birthday-message">
@@ -438,7 +485,30 @@ function sendKiss(){
         setTimeout(()=>kiss.remove(),4000);
     }
 }
+/* Quiz Function */
+function checkQuiz(){
+    let score = 0;
 
+    let answers = document.querySelectorAll("input[type='radio']:checked");
+
+    answers.forEach(answer => {
+        if(answer.value === "correct"){
+            score++;
+        }
+    });
+
+    let result = document.getElementById("quizResult");
+
+    if(score === 4){
+        result.innerHTML = "🥰 Perfect Score! You know us so well my love!";
+    } 
+    else if(score >= 2){
+        result.innerHTML = "😊 Almost there! You still love me though!";
+    } 
+    else{
+        result.innerHTML = "😜 Ohhh nooo! Try again baby!";
+    }
+}
 </script>
 
 </body>
